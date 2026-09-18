@@ -59,7 +59,12 @@
       this.listItems.forEach((item) => {
         const link = item.querySelector("a");
         if (link) {
-          const id = link.getAttribute("href")?.substring(1);
+          const rawId = link.getAttribute("href")?.substring(1) ?? "";
+          let id = rawId;
+          try {
+            id = decodeURIComponent(rawId);
+          } catch {
+          }
           if (id) {
             const element = document.getElementById(id);
             if (element) {
@@ -74,7 +79,12 @@
         const link = item.querySelector("a");
         link?.addEventListener("click", (e) => {
           e.preventDefault();
-          const id = link.getAttribute("href")?.substring(1);
+          const rawId = link.getAttribute("href")?.substring(1) ?? "";
+          let id = rawId;
+          try {
+            id = decodeURIComponent(rawId);
+          } catch {
+          }
           const target = document.getElementById(id || "");
           if (target) {
             target.scrollIntoView({ behavior: "smooth" });
