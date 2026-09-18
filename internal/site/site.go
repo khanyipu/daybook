@@ -393,7 +393,7 @@ func Build(options Options) (BuildResult, error) {
 					}
 					altPrefix := ""
 					if altL == "en_US" {
-						altPrefix = "/en"
+						altPrefix = "en_US"
 					}
 					noteAlternates = append(noteAlternates, seo.Alternate{
 						Lang: altL,
@@ -1187,7 +1187,7 @@ func collectTagLinksForLang(groups []*content.ArticleGroup, lang string, tagRegi
 
 	langPrefix := ""
 	if lang == "en_US" {
-		langPrefix = "/en"
+		langPrefix = "en_US"
 	}
 
 	links := make([]render.TagLink, 0, len(canonicalIDs))

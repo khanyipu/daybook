@@ -3,7 +3,7 @@
 
   // Polyfill translation lookup on client-side for dynamic updates
   // Since we don't have a JS i18n bundle, we'll derive translation from language
-  const isEn = window.location.pathname.startsWith('/en');
+  const isEn = window.location.pathname.startsWith('/en_US');
   
   const translations = {
     'zh_CN': {
