@@ -2,7 +2,7 @@
 
 Daybook is a minimalist static blog generator for Go and HTML beginners, featuring native Obsidian Markdown compatibility, zero-framework TypeScript interactions, and a clean, reading-focused design.
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/StatIndet/daybook-vault)
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/khanyipu/daybook)
 
 If you enjoy Daybook, consider supporting its development.
 
@@ -44,6 +44,22 @@ my-vault/
 ├── notes/
 └── attachments/
 ```
+
+## Deploy to Cloudflare
+
+This fork carries a one-click deploy setup on the `yipu` branch (the default branch). Click the button above to:
+
+1. Connect this repository to Cloudflare (Workers Builds).
+2. Provision the resources declared in `wrangler.jsonc`: a D1 database (page-view statistics) and a Durable Object namespace (realtime presence).
+3. Build the Daybook CLI **from this repository's source** and generate the static site into `public/`.
+4. Deploy the Worker and static assets.
+
+Subsequent pushes to `yipu` automatically trigger a new deployment.
+
+Notes:
+- The build command is `npm run build` (see `scripts/cf-build.sh`). It installs the Go toolchain on demand and compiles the CLI from this repo, so every deployment uses this fork's code — including the `en_US` routing fix.
+- `wrangler.jsonc` ships a placeholder `database_id`; the deploy wizard provisions a fresh D1. After the first deploy, apply the schema once: `npx wrangler d1 migrations apply DB --remote`.
+- Branch model: `main` tracks upstream [StatIndet/daybook](https://github.com/StatIndet/daybook) for syncing; `yipu` carries this deploy configuration and personal changes.
 
 ## Installation
 

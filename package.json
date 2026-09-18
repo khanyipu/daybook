@@ -13,7 +13,11 @@
     "test:reading-rail": "node --test test/reading-toc-rail.test.mjs",
     "typecheck": "tsc --noEmit",
     "build:js": "node scripts/build-js.mjs",
-    "watch:js": "node scripts/build-js.mjs --watch"
+    "watch:js": "node scripts/build-js.mjs --watch",
+    "build": "bash scripts/cf-build.sh",
+    "deploy": "bash scripts/cf-build.sh && npx wrangler deploy",
+    "db:migrate": "npx wrangler d1 migrations apply DB --remote",
+    "dev": "npx wrangler dev"
   },
   "devDependencies": {
     "@chinese-fonts/maple-mono-cn": "^2.0.0",
